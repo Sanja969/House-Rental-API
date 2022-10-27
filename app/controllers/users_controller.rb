@@ -37,8 +37,6 @@ class UsersController < ApplicationController
     @user.destroy
   end
   
-  private
-  
   def find_user
     @user = User.find_by_username!(params[:_username])
     rescue ActiveRecord::RecordNotFound
