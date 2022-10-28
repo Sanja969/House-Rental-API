@@ -1,5 +1,5 @@
 class HousesController < ApplicationController
-  before_action :set_house, only: %i[ show update destroy ]
+  before_action :set_house, only: %i[show update destroy]
 
   # GET /houses
   def index
@@ -39,7 +39,8 @@ class HousesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  # Use callbacks to share common setup or constraints between actions.
   def set_house
     @house = House.find(params[:id])
   end
