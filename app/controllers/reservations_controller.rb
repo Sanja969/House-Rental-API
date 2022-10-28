@@ -5,20 +5,20 @@ class ReservationsController < ApplicationController
     end
 
     def create
-        @user = current_user
-        @reservation = Reservation.create(price: params[:price], status: 'pending' , user_id: @user.id)
-        render json: @reservation, status: :ok
-        # @user = User.find_by_email(params[:email])
-        # if @user&.authenticate(params[:password])
-        #   token = JsonWebToken.encode(user_id: @user.id)
-        #   time = Time.now + 24.hours.to_i
-        #   @reservation = Reservation.create(price: params[:price], status: 'pending' , user_id: @user.id)
+        # @user = current_user
+        # @reservation = Reservation.create(price: params[:price], status: 'pending' , user_id: @user.id)
+        # render json: @reservation, status: :ok
+        @user = User.find_by_email(params[:email])
+        if @user&.authenticate(params[:password])
+          token = JsonWebToken.encode(user_id: @user.id)
+          time = Time.now + 24.hours.to_i
+          @reservation = Reservation.create( status: 'pending' , user_id: @user.id)
           
-        #     render json: @reservation, status: :ok
+            render json: @reservation, status: :ok
         
-        # else
-        #   render json: { error: 'unauthorized' }, status: :unauthorized
-        # end
+        else
+          render json: { error: 'unauthorized' }, status: :unauthorized
+        end
     end
 
     def cancel_reservation
