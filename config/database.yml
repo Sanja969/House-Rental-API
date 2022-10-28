@@ -6,14 +6,14 @@ default: &default
 development:
   <<: *default
   database: house_rental_api_development
-  username: railsreact
-  password: 1582
+  host: localhost
+  pool: 5
+  username: postgres
+  password: MyPassword
 
 test:
   <<: *default
   database: house_rental_api_test
-  username: railsreact
-  password: 1582
 
 production:
   <<: *default
