@@ -15,7 +15,7 @@ class HousesController < ApplicationController
 
   # POST /houses
   def create
-    @house = House.new(house_params)
+    @house = House.new(params[:name], params[:image_data], params[:description], params[:price])
 
     if @house.save
       render json: @house, status: :created, location: @house
