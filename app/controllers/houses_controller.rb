@@ -15,7 +15,7 @@ class HousesController < ApplicationController
 
   # POST /houses
   def create
-    @house = House.new(params[:name], params[:image_data], params[:description], params[:price])
+    @house = User.find_by(role: 'admin').houses.new(house_params)
 
     if @house.save
       render json: @house, status: :created, location: @house
@@ -35,6 +35,7 @@ class HousesController < ApplicationController
 
   # DELETE /houses/1
   def destroy
+    @house.reservations.each(&:destroy)
     @house.destroy
   end
 
@@ -45,8 +46,7 @@ class HousesController < ApplicationController
     @house = House.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def house_params
-    params.fetch(:house, {})
+    params.permit(:name, :image_data, :description, :price, :user_id)
   end
 end
