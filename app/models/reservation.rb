@@ -1,4 +1,5 @@
 class Reservation < ApplicationRecord
-  belongs_to :hours, class_name: 'House', foreign_key: 'house_id'
-  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :house, foreign_key: 'house_id'
+  belongs_to :user, foreign_key: 'user_id'
+  validates :city, :date, :user_id, :house_id, presence: true
 end

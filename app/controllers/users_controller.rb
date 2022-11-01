@@ -16,8 +16,10 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
+    time = Time.now + 24.hours.to_i
+    token = JsonWebToken.encode(user_id: @user.id)
     if @user.save
-      render json: @user, status: :created
+      render json: { username: @user.username, exp: time.strftime('%m-%d-%Y %H:%M'), token: }, status: :created
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
@@ -45,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.permit(
-      :avatar, :name, :username, :email, :password, :password_confirmation
+      :username, :email, :password, :password_confirmation
     )
   end
 end
