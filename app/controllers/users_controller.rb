@@ -19,7 +19,9 @@ class UsersController < ApplicationController
     time = Time.now + 24.hours.to_i
     token = JsonWebToken.encode(user_id: @user.id)
     if @user.save
-      render json: { username: @user.username, exp: time.strftime('%m-%d-%Y %H:%M'), token: }, status: :created
+      render json:
+      { username: @user.username, exp: time.strftime('%m-%d-%Y %H:%M'), id: @user.id, role: @user.role, token: },
+             status: :created
     else
       render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
