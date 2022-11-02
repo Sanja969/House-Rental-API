@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_161753) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_02_164544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,6 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_161753) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.boolean "available"
+    t.string "city"
+    t.string "adress"
     t.index ["user_id"], name: "index_houses_on_user_id"
   end
 
@@ -33,7 +35,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_161753) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.bigint "house_id", null: false
-    t.string "city"
     t.date "end_date"
     t.index ["house_id"], name: "index_reservations_on_house_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
