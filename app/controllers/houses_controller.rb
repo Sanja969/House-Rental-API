@@ -37,6 +37,8 @@ class HousesController < ApplicationController
   def destroy
     @house.reservations.each(&:destroy)
     @house.destroy
+    @houses = House.all
+    render json: @houses, status: :ok
   end
 
   private
