@@ -42,7 +42,7 @@ RSpec.describe 'Houses API', type: :request do
                     available: { type: :boolean },
                     user_id: { type: :integer }
                 },
-                required: [ 'name', 'description', 'price', 'city', 'adress', 'available' ]
+                required: [ 'name', 'description', 'price', 'city', 'adress', 'available', 'user_id' ]
             }
             response '201', 'house created' do
                 let(:user) { {username: 'test', email: 'mail1@mail.com', password: '123456aa', password_confirmation: '123456aa', role: 'admin'} }
@@ -99,7 +99,7 @@ RSpec.describe 'Houses API', type: :request do
                     available: { type: :boolean },
                     user_id: { type: :integer }
                 },
-                required: [ 'name', 'description', 'price', 'city', 'adress', 'available' ]
+                required: [ 'name', 'description', 'price', 'city', 'adress', 'available', 'user_id' ]
             }
             response '200', 'house updated' do
                 let(:user) { {username: 'test', email: 'mail1@mail.com', password: '123456aa', password_confirmation: '123456aa', role: 'admin'} }

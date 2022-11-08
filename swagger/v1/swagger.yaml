@@ -100,6 +100,7 @@ paths:
               - city
               - adress
               - available
+              - user_id
           application/xml:
             schema:
               type: object
@@ -125,6 +126,7 @@ paths:
               - city
               - adress
               - available
+              - user_id
   "/houses/{id}":
     get:
       summary: Retrieves a house
@@ -230,6 +232,7 @@ paths:
               - city
               - adress
               - available
+              - user_id
           application/xml:
             schema:
               type: object
@@ -255,6 +258,7 @@ paths:
               - city
               - adress
               - available
+              - user_id
     delete:
       summary: Deletes a house
       tags:
