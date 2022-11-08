@@ -4,6 +4,270 @@ info:
   title: HOUSE RENTAL API
   version: v1
 paths:
+  "/houses":
+    get:
+      summary: Retrieves a list of houses
+      tags:
+      - Houses
+      responses:
+        '200':
+          description: houses found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: integer
+                        city:
+                          type: string
+                        adress:
+                          type: string
+                        available:
+                          type: boolean
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: integer
+                        city:
+                          type: string
+                        adress:
+                          type: string
+                        available:
+                          type: boolean
+                required:
+                - data
+    post:
+      summary: Creates a house
+      tags:
+      - Houses
+      parameters: []
+      responses:
+        '201':
+          description: house created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+  "/houses/{id}":
+    get:
+      summary: Retrieves a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: house found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: integer
+                      city:
+                        type: string
+                      adress:
+                        type: string
+                      available:
+                        type: boolean
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: integer
+                      city:
+                        type: string
+                      adress:
+                        type: string
+                      available:
+                        type: boolean
+                required:
+                - data
+        '404':
+          description: house not found
+    patch:
+      summary: Updates a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: house updated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+    delete:
+      summary: Deletes a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: house deleted
   "/users":
     post:
       summary: Creates a user

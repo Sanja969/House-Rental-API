@@ -100,7 +100,6 @@ RSpec.describe 'Users API', type: :request do
                     let(:user) { { username: 'test', email: 'mail1@mail.com', password: '123456aa', password_confirmation: '123456aa' } }
                     run_test!
                 end
-                
             end
         end
 
