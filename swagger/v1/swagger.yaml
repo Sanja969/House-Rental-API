@@ -272,6 +272,238 @@ paths:
       responses:
         '204':
           description: house deleted
+  "/reservations":
+    get:
+      summary: Retrieves a list of reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: reservations found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        end_date:
+                          type: string
+                        user_id:
+                          type: integer
+                        house_id:
+                          type: integer
+                        status:
+                          type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        end_date:
+                          type: string
+                        user_id:
+                          type: integer
+                        house_id:
+                          type: integer
+                        status:
+                          type: string
+                required:
+                - data
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+  "/reservations/{id}":
+    get:
+      summary: Retrieves a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+                      end_date:
+                        type: string
+                      user_id:
+                        type: integer
+                      house_id:
+                        type: integer
+                      status:
+                        type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+                      end_date:
+                        type: string
+                      user_id:
+                        type: integer
+                      house_id:
+                        type: integer
+                      status:
+                        type: string
+                required:
+                - data
+    put:
+      summary: Updates a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation updated
+        '404':
+          description: reservation not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+    delete:
+      summary: Deletes a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: reservation deleted
   "/users":
     post:
       summary: Creates a user
