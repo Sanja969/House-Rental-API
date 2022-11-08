@@ -1,0 +1,163 @@
+---
+openapi: 3.0.1
+info:
+  title: HOUSE RENTAL API
+  version: v1
+paths:
+  "/users":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+  "/users/{username}":
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      email:
+                        type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      email:
+                        type: string
+                required:
+                - data
+    delete:
+      summary: Deletes a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user deleted
+    patch:
+      summary: Updates a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+servers:
+- url: http://localhost:3000/
+  description: Local server
