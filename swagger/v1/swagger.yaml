@@ -4,6 +4,41 @@ info:
   title: HOUSE RENTAL API
   version: v1
 paths:
+  "/auth/login":
+    post:
+      summary: Authenticates a user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: user authenticated
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
   "/houses":
     get:
       summary: Retrieves a list of houses
