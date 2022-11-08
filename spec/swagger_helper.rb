@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -16,7 +14,7 @@ RSpec.configure do |config|
       servers: [
         {
           url: 'http://localhost:3000/',
-          description: 'Local server',
+          description: 'Local server'
         }
       ]
     }
