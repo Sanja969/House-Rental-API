@@ -1,0 +1,698 @@
+---
+openapi: 3.0.1
+info:
+  title: HOUSE RENTAL API
+  version: v1
+paths:
+  "/auth/login":
+    post:
+      summary: Authenticates a user
+      tags:
+      - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: user authenticated
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+  "/houses":
+    get:
+      summary: Retrieves a list of houses
+      tags:
+      - Houses
+      responses:
+        '200':
+          description: houses found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: integer
+                        city:
+                          type: string
+                        adress:
+                          type: string
+                        available:
+                          type: boolean
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        price:
+                          type: integer
+                        city:
+                          type: string
+                        adress:
+                          type: string
+                        available:
+                          type: boolean
+                required:
+                - data
+    post:
+      summary: Creates a house
+      tags:
+      - Houses
+      parameters: []
+      responses:
+        '201':
+          description: house created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+              - user_id
+  "/houses/{id}":
+    get:
+      summary: Retrieves a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: house found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: integer
+                      city:
+                        type: string
+                      adress:
+                        type: string
+                      available:
+                        type: boolean
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      price:
+                        type: integer
+                      city:
+                        type: string
+                      adress:
+                        type: string
+                      available:
+                        type: boolean
+                required:
+                - data
+        '404':
+          description: house not found
+    patch:
+      summary: Updates a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: house updated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+              - user_id
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                price:
+                  type: integer
+                city:
+                  type: string
+                adress:
+                  type: string
+                available:
+                  type: boolean
+                user_id:
+                  type: integer
+              required:
+              - name
+              - description
+              - price
+              - city
+              - adress
+              - available
+              - user_id
+    delete:
+      summary: Deletes a house
+      tags:
+      - Houses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: house deleted
+  "/reservations":
+    get:
+      summary: Retrieves a list of reservations
+      tags:
+      - Reservations
+      responses:
+        '200':
+          description: reservations found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        end_date:
+                          type: string
+                        user_id:
+                          type: integer
+                        house_id:
+                          type: integer
+                        status:
+                          type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        date:
+                          type: string
+                        end_date:
+                          type: string
+                        user_id:
+                          type: integer
+                        house_id:
+                          type: integer
+                        status:
+                          type: string
+                required:
+                - data
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '201':
+          description: reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+  "/reservations/{id}":
+    get:
+      summary: Retrieves a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+                      end_date:
+                        type: string
+                      user_id:
+                        type: integer
+                      house_id:
+                        type: integer
+                      status:
+                        type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      date:
+                        type: string
+                      end_date:
+                        type: string
+                      user_id:
+                        type: integer
+                      house_id:
+                        type: integer
+                      status:
+                        type: string
+                required:
+                - data
+    put:
+      summary: Updates a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: reservation updated
+        '404':
+          description: reservation not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+          application/xml:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                end_date:
+                  type: string
+                house_id:
+                  type: integer
+                user_id:
+                  type: integer
+                status:
+                  type: string
+              required:
+              - start_date
+              - end_date
+              - house_id
+              - user_id
+              - status
+    delete:
+      summary: Deletes a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: reservation deleted
+  "/users":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+  "/users/{username}":
+    get:
+      summary: Retrieves a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      email:
+                        type: string
+                required:
+                - data
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      username:
+                        type: string
+                      email:
+                        type: string
+                required:
+                - data
+    delete:
+      summary: Deletes a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user deleted
+    patch:
+      summary: Updates a user
+      tags:
+      - Users
+      parameters:
+      - name: username
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user updated
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - username
+              - email
+              - password
+              - password_confirmation
+servers:
+- url: http://localhost:3000/
+  description: Local server

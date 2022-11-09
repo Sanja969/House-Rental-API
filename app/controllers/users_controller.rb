@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   # DELETE /users/{username}
   def destroy
     @user.destroy
+    render json: { message: 'User deleted' }, status: :ok
   end
 
   def find_user
