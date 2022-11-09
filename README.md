@@ -25,6 +25,9 @@ Main features of this website are:
 [Live Demo Link](https://x-house.herokuapp.com/)
 
 
+![Screen Shot 2022-11-09 at 11 44 04 AM](https://user-images.githubusercontent.com/102184682/200786497-eb5c8175-483a-4530-820c-4a64ed946fe8.png)
+
+
 - Kanban Board [link](https://github.com/users/Sanja969/projects/7)
 
 ## Getting Started
