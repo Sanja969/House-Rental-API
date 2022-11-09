@@ -57,7 +57,11 @@ To get a local copy up and running follow these simple example steps.
 ```
 bundle install
 ```
+
+```
 rails db:drop db:create db:migrate
+```
+
 ```
 rails s
 ```
