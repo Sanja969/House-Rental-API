@@ -24,11 +24,16 @@ Main features of this website are:
 ## Live Demo
 [Live Demo Link](https://x-house.herokuapp.com/)
 
+- Kanban Board 
+- Kanban Board: Kanban Board [link](https://github.com/users/Sanja969/projects/7) Initial state of the Kanban Board:
 
-![Screen Shot 2022-11-09 at 11 44 04 AM](https://user-images.githubusercontent.com/102184682/200786497-eb5c8175-483a-4530-820c-4a64ed946fe8.png)
+![Screen Shot 2022-11-09 at 4 47 02 PM](https://user-images.githubusercontent.com/102184682/200846980-f856a8e3-6ebc-4e2a-95c6-0f051db83ffe.png)
+![Screen Shot 2022-11-09 at 4 44 54 PM](https://user-images.githubusercontent.com/102184682/200846997-ae9cc383-2948-4adc-b040-627a0782b26e.png)
+
+- Front-end iamge
+![Screen Shot 2022-11-09 at 11 44 04 AM](https://user-images.githubusercontent.com/102184682/200848959-6cf583f4-4a4a-4518-91c3-d569102771a4.png)
 
 
-- Kanban Board [link](https://github.com/users/Sanja969/projects/7)
 
 ## Getting Started
 
