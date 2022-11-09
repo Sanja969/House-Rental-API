@@ -2,7 +2,7 @@
 
 # House Rental
 
-This project is for the reservation of houses. If you're planning a special day or event, or if you want to spend time with your family, this is the website for you.You can book a house in any city on the planet. 
+This project an API  for the reservation of houses. If you're planning a special day or event, or if you want to spend time with your family, this is the website for you.You can book a house in any city on the planet. 
 Main features of this website are:
 
 - Users can see details of all the Houses.
@@ -79,7 +79,7 @@ npm start
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-Feel free to check the [issues page](https://github.com/Sanja969/house-rental/issues).
+Feel free to check the [issues page](https://github.com/Sanja969/house-rental-api/issues).
 
 ## Show your support
 
