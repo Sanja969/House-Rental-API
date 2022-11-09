@@ -1,0 +1,26 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: house_rental_api_development
+  host: localhost
+  pool: 5
+  username: postgres
+  password: postgres
+
+test:
+  <<: *default
+  database: house_rental_api_test
+  username: postgres
+  password: postgres
+
+production:
+  <<: *default
+  database: house_rental_api_production
+  username: house_rental_api
+  password: <%= ENV["HOUSE_RENTAL_API_DATABASE_PASSWORD"] %>
