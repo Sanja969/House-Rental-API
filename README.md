@@ -47,15 +47,21 @@ To get a local copy up and running follow these simple example steps.
 
 ### Install and start
 
-- Run the command bellow in your terminal to get all required files
+- Run the command bellow in your terminal to get all required files:
 
 ```
-npm install
+bundle install
 ```
 
 ```
-npm start
+rails s
 ```
+
+### Test
+
+- Run tests with the next command:
+
+- rake rswag
 
 ## Authors
 
