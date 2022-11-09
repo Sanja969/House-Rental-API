@@ -47,12 +47,12 @@ To get a local copy up and running follow these simple example steps.
 
 ### Install and start
 
-- Run the command bellow in your terminal to get all required files:
+- Run the command below in your terminal to get all required files:
 
 ```
 bundle install
 ```
-
+rails db:drop db:create db:migrate
 ```
 rails s
 ```
