@@ -13,8 +13,12 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://localhost:3000/',
-          description: 'Local server'
+          url: 'https://{heroku}',
+          variables: {
+            defaultHost: {
+              default: 'x-house-book.herokuapp.com/'
+            }
+          }
         }
       ]
     }
