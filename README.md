@@ -16,9 +16,9 @@ Main features of this website are:
 - Code Editor: VS Code.
 - Technologies: Git, Gitflow, Linters, Github, PostgreSql, Rspec, Capybara, Robocop
 
-## Link to back-end App 
+## Link to front-end App 
 - Gitgub link [click](https://github.com/Sanja969/house-rental)
-- Api heroku link [click](https://x-house.herokuapp.com)
+- Heroku link [click](https://x-house.herokuapp.com)
 
 
 ## Live Demo
